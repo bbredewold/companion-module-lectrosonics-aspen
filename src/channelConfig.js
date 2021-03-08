@@ -117,7 +117,7 @@ module.exports = {
     switch (command) {
       case 'ingn': // Input Gain
         stateChannel = this.state.audioInputs[channel]
-        if (stateChannel.gain.currentValue !== value) {
+        if (stateChannel && stateChannel.gain.currentValue !== value) {
           stateChannel.gain.currentValue = value
           this.setVariable(stateChannel.gain.variable.name, value)
         }
@@ -125,7 +125,7 @@ module.exports = {
 
       case 'inmt': // Input Mute
         stateChannel = this.state.audioInputs[channel]
-        if (stateChannel.mute.currentValue !== value) {
+        if (stateChannel && stateChannel.mute.currentValue !== value) {
           stateChannel.mute.currentValue = value
           this.setVariable(stateChannel.mute.variable.name, value === '1' ? 'ON' : 'OFF')
           this.checkFeedbacks('input_mute')
@@ -134,7 +134,7 @@ module.exports = {
 
       case 'outgn': // Output Gain
         stateChannel = this.state.audioOutputs[channel]
-        if (stateChannel.gain.currentValue !== value) {
+        if (stateChannel && stateChannel.gain.currentValue !== value) {
           this.state.audioOutputs[channel].gain.currentValue = value
           this.setVariable(this.state.audioOutputs[channel].gain.variable.name, value)
         }
@@ -142,7 +142,7 @@ module.exports = {
 
       case 'outmt': // Output Mute
         stateChannel = this.state.audioOutputs[channel]
-        if (stateChannel.mute.currentValue !== value) {
+        if (stateChannel && stateChannel.mute.currentValue !== value) {
           this.state.audioOutput[channel].mute.currentValue = value
           this.setVariable(this.state.audioOutput[channel].mute.variable.name, value === '1' ? 'ON' : 'OFF')
           this.checkFeedbacks('output_mute')
@@ -151,7 +151,7 @@ module.exports = {
 
       case 'rpingn': // Rear Panel Input Gain
         stateChannel = this.state.rearInputs[channel]
-        if (stateChannel.gain.currentValue !== value) {
+        if (stateChannel && stateChannel.gain.currentValue !== value) {
           this.state.rearInputs[channel].gain.currentValue = value
           this.setVariable(this.state.rearInputs[channel].gain.variable.name, value)
         }
@@ -159,7 +159,7 @@ module.exports = {
 
       case 'rpoutgn': // Rear Panel Output Gain
         stateChannel = this.state.rearOutputs[channel]
-        if (stateChannel.gain.currentValue !== value) {
+        if (stateChannel && stateChannel.gain.currentValue !== value) {
           this.state.rearOutputs[channel].gain.currentValue = value
           this.setVariable(this.state.rearOutputs[channel].gain.variable.name, value)
         }
