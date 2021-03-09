@@ -135,16 +135,16 @@ module.exports = {
       case 'outgn': // Output Gain
         stateChannel = this.state.audioOutputs[channel]
         if (stateChannel && stateChannel.gain.currentValue !== value) {
-          this.state.audioOutputs[channel].gain.currentValue = value
-          this.setVariable(this.state.audioOutputs[channel].gain.variable.name, value)
+          stateChannel.gain.currentValue = value
+          this.setVariable(stateChannel.gain.variable.name, value)
         }
         break
 
       case 'outmt': // Output Mute
         stateChannel = this.state.audioOutputs[channel]
         if (stateChannel && stateChannel.mute.currentValue !== value) {
-          this.state.audioOutput[channel].mute.currentValue = value
-          this.setVariable(this.state.audioOutput[channel].mute.variable.name, value === '1' ? 'ON' : 'OFF')
+          stateChannel.mute.currentValue = value
+          this.setVariable(stateChannel.mute.variable.name, value === '1' ? 'ON' : 'OFF')
           this.checkFeedbacks('output_mute')
         }
         break
@@ -152,16 +152,16 @@ module.exports = {
       case 'rpingn': // Rear Panel Input Gain
         stateChannel = this.state.rearInputs[channel]
         if (stateChannel && stateChannel.gain.currentValue !== value) {
-          this.state.rearInputs[channel].gain.currentValue = value
-          this.setVariable(this.state.rearInputs[channel].gain.variable.name, value)
+          stateChannel.gain.currentValue = value
+          this.setVariable(stateChannel.gain.variable.name, value)
         }
         break
 
       case 'rpoutgn': // Rear Panel Output Gain
         stateChannel = this.state.rearOutputs[channel]
         if (stateChannel && stateChannel.gain.currentValue !== value) {
-          this.state.rearOutputs[channel].gain.currentValue = value
-          this.setVariable(this.state.rearOutputs[channel].gain.variable.name, value)
+          stateChannel.gain.currentValue = value
+          this.setVariable(stateChannel.gain.variable.name, value)
         }
         break
     }
